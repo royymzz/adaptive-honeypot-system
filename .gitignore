@@ -1,0 +1,21 @@
+# Secrets and environment files
+.env
+.env.*
+*.secret
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs and raw honeypot data
+*.log
+cowrie.json
+var/log/
+raw_logs/
+
+# OS/editor files
+.DS_Store
+.vscode/
+.idea/
