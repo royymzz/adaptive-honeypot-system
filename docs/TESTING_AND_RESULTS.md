@@ -2,49 +2,51 @@
 
 ## Controlled Lab Environment
 
-Testing was performed in an isolated virtual lab. The Cowrie honeypot ran on one Kali Linux virtual machine, while a second Kali Linux machine was used to generate controlled test activity.
+Testing was performed in an isolated virtual lab. The Cowrie honeypot ran on one Kali Linux virtual machine, while a second Kali Linux virtual machine generated controlled test activity.
 
-The purpose of the tests was to verify that the customized honeypot could record interaction with the deceptive environment and that relevant activity could be surfaced through the monitoring and alerting workflow.
+The tests examined whether the customized environment captured the expected interaction data and whether relevant events could pass through the monitoring and Telegram-alert workflow.
 
-## Test Scenarios
+## Documented Test Scenarios
 
-### Login attempts
+### Authentication activity
 
-Controlled authentication attempts were generated against the honeypot. Cowrie recorded failed and successful login events, allowing authentication activity to be reviewed in the logs.
+Controlled login attempts were generated against the honeypot. The dissertation records both failed and successful authentication events in Cowrie logs and documents a Telegram notification associated with login activity.
 
 ### Command activity
 
-Commands were entered through the emulated SSH environment to verify that command input was captured by Cowrie and could be identified by the monitoring workflow.
+After connecting to the emulated environment, commands including `ls`, `cat`, `wget`, and `ps` were used during testing. Cowrie recorded command activity using `cowrie.command.input` events.
 
 ### Deceptive file interaction
 
-The customized filesystem contained fictional files and credentials intended to make the environment more realistic. Tests included accessing these files and verifying that the resulting activity appeared in the honeypot logs.
+Fictional files were intentionally placed in the customized Cowrie filesystem. The documented tests included reading deceptive credential-style files and observing the resulting interaction.
 
-### File retrieval activity
+### Controlled file retrieval
 
-Controlled download activity was generated to verify that file-retrieval events could be recorded and detected by the monitoring workflow.
+The experiments included `wget` activity. Cowrie recorded the command and simulated the download within the honeypot environment.
 
 ### Real-time notifications
 
-The alerting pipeline was tested by monitoring Cowrie activity and sending relevant event information through a Python component using the Telegram Bot API.
+The monitoring implementation connected Cowrie log activity to a Python Telegram notification component. The dissertation documents real-time notifications for relevant events during the controlled experiments.
 
-## Evidence Produced During the Project
+## Evidence Documented in the Dissertation
 
-The dissertation documented evidence including:
+The original dissertation includes screenshots or examples showing:
 
-- failed login events
-- successful login events
-- Telegram notifications for login activity
-- captured command execution
-- file-download activity
+- failed login logging
+- successful login logging
+- a Telegram login alert
+- command-input logging
+- a simulated download through `wget`
 - access to deceptive credential files
-- the Python alerting component
-- the shell log-monitoring component
-- the systemd monitoring service
-- Telegram notifications triggered by command activity
+- the Python Telegram alerting script
+- the Bash log-monitoring script
+- the systemd service configuration
+- Telegram notifications produced during command activity
 
 ## Interpretation
 
-The project explored whether adding human-like and deceptive elements could encourage additional interaction with a honeypot and provide richer telemetry for analysis. The controlled tests demonstrated the complete workflow from honeypot interaction to event logging and real-time notification.
+The research investigated whether human-like and deceptive elements could make the honeypot environment more realistic and encourage useful interaction for analysis. The documented tests verify the technical workflow from interaction, to Cowrie logging, to monitoring, to real-time notification.
 
-This repository does not publish raw experimental logs or private alert data. Public examples are sanitized or synthetic.
+The public repository does **not** treat the reconstructed sample events as original experimental measurements and does not claim a quantified improvement in attacker engagement unless supported by the original study data.
+
+Raw experimental logs and private alert data are not published here. Public examples are sanitized or synthetic.
