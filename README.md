@@ -2,72 +2,91 @@
 
 **Bachelor's Thesis Project — BSc Cybersecurity and Networks, 2025**
 
-A cybersecurity research project exploring a Cowrie SSH/Telnet honeypot enhanced with human-like deception, attack monitoring, and real-time Telegram alerts.
+A controlled cybersecurity research project built around the Cowrie SSH/Telnet honeypot, combining a deceptive filesystem, human-like interaction concepts, attack telemetry analysis, and real-time Telegram alerts.
 
-## Overview
+> **Portfolio note:** This repository is a sanitized reconstruction of the completed academic project. The implementation and experiments described below come from the original dissertation. Public sample data, configuration templates, and documentation have been cleaned or reconstructed to remove credentials and personal identifiers.
 
-This project was developed as a final-year Bachelor's dissertation. The aim was to investigate whether adding more realistic, human-like behaviour to a honeypot could increase attacker interaction and produce richer security data.
+## Research Goal
 
-The system was built in a controlled lab environment using two Kali Linux virtual machines. One machine hosted a customized Cowrie honeypot, while the second was used to perform controlled attack simulations.
+The project investigated whether a more realistic, human-like honeypot environment could encourage attacker interaction and provide richer telemetry for security analysis.
 
-The honeypot included a deceptive filesystem, fictional credentials and files, simulated activity, automated log monitoring, and real-time administrator notifications.
+A controlled virtual lab was created with two Kali Linux virtual machines: one hosting the customized Cowrie honeypot and one generating controlled test activity. The environment combined deception, event logging, log analysis, automated monitoring, and real-time notifications.
 
-## Key Features
+## What Was Implemented
 
-- Cowrie SSH/Telnet honeypot deployed in a controlled Kali Linux environment
-- Customized deceptive filesystem with fictional files and credentials
-- Human-like and scripted interactions designed to improve realism
-- Monitoring of login attempts, commands, user input, session activity, and download attempts
-- Python-based Telegram alert integration
-- Bash-based real-time Cowrie log monitoring
-- systemd service for automatic monitoring on startup
-- JSON log analysis using `jq`
-- Controlled testing of brute-force attempts, command execution, and file retrieval
+- Cowrie SSH/Telnet honeypot in a controlled Kali Linux environment
+- Customized deceptive filesystem containing fictional files and credentials
+- Human-like and scripted interaction elements intended to improve realism
+- Capture and analysis of authentication, command, session, and download activity
+- Python integration with the Telegram Bot API for real-time alerts
+- Bash-based Cowrie log monitoring
+- systemd service for automatic monitoring startup
+- JSON event inspection and filtering with `jq`
+- Controlled evaluation using login attempts, command execution, deceptive-file access, and file retrieval
 
-## Architecture
+## System Flow
 
 ```text
-Attacker / Test VM
+Controlled Test VM
         |
-        | SSH
+        | SSH interaction
         v
-+-------------------+
-|  Cowrie Honeypot  |
-|  Deceptive Shell  |
-+---------+---------+
-          |
-          | Cowrie logs
-          v
-+-------------------+
-| Log Monitoring    |
-+---------+---------+
-          |
-          v
-+-------------------+
-| Python Alerting   |
-+---------+---------+
-          |
-          | Telegram Bot API
-          v
-+-------------------+
-| Real-time Alert   |
-+-------------------+
++---------------------+
+|   Cowrie Honeypot   |
+|  Deceptive Filesystem|
++----------+----------+
+           |
+           | event / log data
+           v
++---------------------+
+|   Log Monitoring    |
++----------+----------+
+           |
+           v
++---------------------+
+|   Python Alerting   |
++----------+----------+
+           |
+           | Telegram Bot API
+           v
++---------------------+
+|  Real-time Alerts   |
++---------------------+
 ```
+
+## Controlled Evaluation
+
+The academic evaluation covered several observable behaviours within the lab environment:
+
+| Scenario | Evidence captured |
+| --- | --- |
+| Authentication attempts | Failed and successful login events |
+| Shell interaction | Commands recorded as Cowrie command-input events |
+| Deceptive file access | Interaction with intentionally placed fictional files and credentials |
+| File retrieval | Controlled download activity recorded by the honeypot |
+| Monitoring | Relevant Cowrie activity detected by the log-monitoring component |
+| Alerting | Telegram notifications generated from monitored events |
+
+The project explored the effect of human-like and deceptive elements on honeypot interaction. This portfolio version intentionally describes that as the research objective rather than presenting a stronger quantitative claim than the documented experiments support.
 
 ## Documentation
 
-- [Project Notes](docs/PROJECT_NOTES.md) — design and implementation summary
+- [Project Notes](docs/PROJECT_NOTES.md) — implementation and design summary
 - [Lab Setup Overview](docs/SETUP_OVERVIEW.md) — controlled environment and project components
-- [Testing and Results](docs/TESTING_AND_RESULTS.md) — evaluation scenarios and evidence produced
-- [Security and Sanitization](docs/SECURITY.md) — rules used to keep the public portfolio version safe
+- [Testing and Results](docs/TESTING_AND_RESULTS.md) — documented test scenarios and evidence
+- [Security and Sanitization](docs/SECURITY.md) — rules used for the public portfolio reconstruction
 
-## Sanitized Event Examples
+## Public Examples
 
-The `samples/` directory contains synthetic or sanitized Cowrie-style events that demonstrate the type of telemetry analyzed during the project without publishing raw honeypot data.
+The repository contains sanitized examples representing the kinds of artifacts used in the project:
 
-- `sanitized_cowrie_event.json` — example authentication event
-- `sanitized_command_event.json` — example command-input event
-- `sanitized_download_event.json` — example controlled download-command event
+- `samples/sanitized_cowrie_event.json` — authentication-event example
+- `samples/sanitized_command_event.json` — command-input example
+- `samples/sanitized_download_event.json` — controlled download-command example
+- `honeypot/example_fake_files/` — reconstructed fictional files representing the deceptive filesystem concept
+- `.env.example` — placeholder-only Telegram configuration template
+
+These public examples are not presented as untouched original experiment data. Raw logs, original secrets, and identifying information are intentionally excluded.
 
 ## Repository Structure
 
@@ -82,6 +101,8 @@ adaptive-honeypot-system/
 │   └── watchlog.service
 ├── honeypot/
 │   └── example_fake_files/
+│       ├── email_cred.txt
+│       └── important.txt
 ├── samples/
 │   ├── sanitized_cowrie_event.json
 │   ├── sanitized_command_event.json
@@ -93,22 +114,19 @@ adaptive-honeypot-system/
     └── SECURITY.md
 ```
 
-## Academic Context
-
-This repository is a cleaned and sanitized portfolio version of a 2025 Bachelor's dissertation project in Cybersecurity and Networks. The original research investigated the use of more human-like behaviour in honeypot environments and evaluated the resulting interaction through controlled experiments and Cowrie log analysis.
-
-The experiments included simulated brute-force login attempts, command execution, and file retrieval. The project also evaluated a real-time alerting pipeline that connected Cowrie log events to Telegram notifications.
-
 ## Security & Privacy
 
-This public repository intentionally excludes real credentials, API tokens, personal identifiers, and unsanitized logs. Example credentials and events included here are fictional or sanitized for demonstration purposes.
+The public repository excludes real API tokens, Telegram chat identifiers, personal identifiers, unsanitized logs, and real credentials. Original screenshots are not published as-is when they expose unnecessary raw data or credentials.
 
-The original academic screenshots are also kept out of the public repository unless they can be safely sanitized. In particular, screenshots containing credentials, identifiers, or unnecessary raw event data are not published as-is.
+The alerting example reads Telegram configuration from environment variables rather than embedding secrets in source code.
 
 ## Technologies
 
-Python · Bash · Cowrie · Kali Linux · Linux · systemd · Telegram Bot API · JSON · jq · VirtualBox
+`Python` · `Bash` · `Cowrie` · `Kali Linux` · `Linux` · `systemd` · `Telegram Bot API` · `JSON` · `jq` · `VirtualBox`
 
-## Status
+## Project Status
 
-The original academic project was completed in 2025. This repository preserves a sanitized version of the implementation for portfolio and educational purposes.
+**Academic project:** completed in 2025  
+**Public repository:** sanitized portfolio reconstruction
+
+The repository preserves the technical design, implementation concepts, and controlled evaluation of the original project while keeping sensitive academic and operational information out of the public version.
