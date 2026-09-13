@@ -58,32 +58,40 @@ The project explored the effect of human-like and deceptive elements on honeypot
 - [Lab Setup Overview](docs/SETUP_OVERVIEW.md) — controlled environment and project components
 - [Testing and Results](docs/TESTING_AND_RESULTS.md) — documented test scenarios and evidence
 - [Security and Sanitization](docs/SECURITY.md) — rules used for the public portfolio reconstruction
-- 
+ 
 ## Demonstration
 
-The screenshots below were captured during the controlled evaluation of the original academic project.
+The following screenshots were captured during the controlled evaluation of the original Bachelor's thesis project.
 
-### Successful authentication recorded by Cowrie
+### Successful Authentication Recorded by Cowrie
 
-![Successful Login](assets/screenshots/02-successful-login-logs.png)
-
----
-
-### Command activity captured by the honeypot
-
-![Command Activity](assets/screenshots/03-command-activity-logs.png)
+<p align="center">
+  <img src="assets/screenshots/02-successful-login-logs.png" width="700">
+</p>
 
 ---
 
-### Interaction with the deceptive filesystem
+### Command Activity Captured by the Honeypot
 
-![Deceptive Files](assets/screenshots/05-deceptive-file-access.png)
+<p align="center">
+  <img src="assets/screenshots/03-command-activity.png" width="700">
+</p>
 
 ---
 
-### Real-time Telegram alerts
+### Controlled Download Activity (`wget`)
 
-![Telegram Alerts](assets/screenshots/06-telegram-alerts.png)
+<p align="center">
+  <img src="assets/screenshots/05-download-activity.png" width="700">
+</p>
+
+---
+
+### Real-time Telegram Alerts
+
+<p align="center">
+  <img src="assets/screenshots/06-telegram-alerts.png" width="700">
+</p>
 
 ## Public Examples
 
