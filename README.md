@@ -59,6 +59,15 @@ Attacker / Test VM
 - [Project Notes](docs/PROJECT_NOTES.md) — design and implementation summary
 - [Lab Setup Overview](docs/SETUP_OVERVIEW.md) — controlled environment and project components
 - [Testing and Results](docs/TESTING_AND_RESULTS.md) — evaluation scenarios and evidence produced
+- [Security and Sanitization](docs/SECURITY.md) — rules used to keep the public portfolio version safe
+
+## Sanitized Event Examples
+
+The `samples/` directory contains synthetic or sanitized Cowrie-style events that demonstrate the type of telemetry analyzed during the project without publishing raw honeypot data.
+
+- `sanitized_cowrie_event.json` — example authentication event
+- `sanitized_command_event.json` — example command-input event
+- `sanitized_download_event.json` — example controlled download-command event
 
 ## Repository Structure
 
@@ -74,11 +83,14 @@ adaptive-honeypot-system/
 ├── honeypot/
 │   └── example_fake_files/
 ├── samples/
-│   └── sanitized_cowrie_event.json
+│   ├── sanitized_cowrie_event.json
+│   ├── sanitized_command_event.json
+│   └── sanitized_download_event.json
 └── docs/
     ├── PROJECT_NOTES.md
     ├── SETUP_OVERVIEW.md
-    └── TESTING_AND_RESULTS.md
+    ├── TESTING_AND_RESULTS.md
+    └── SECURITY.md
 ```
 
 ## Academic Context
@@ -90,6 +102,8 @@ The experiments included simulated brute-force login attempts, command execution
 ## Security & Privacy
 
 This public repository intentionally excludes real credentials, API tokens, personal identifiers, and unsanitized logs. Example credentials and events included here are fictional or sanitized for demonstration purposes.
+
+The original academic screenshots are also kept out of the public repository unless they can be safely sanitized. In particular, screenshots containing credentials, identifiers, or unnecessary raw event data are not published as-is.
 
 ## Technologies
 
