@@ -1,0 +1,9 @@
+{
+  "eventid": "cowrie.command.input",
+  "input": "wget https://example.com/sample.txt",
+  "message": "CMD: wget https://example.com/sample.txt",
+  "sensor": "lab-honeypot",
+  "timestamp": "2025-05-29T08:22:00Z",
+  "src_ip": "192.0.2.10",
+  "session": "example-session-id"
+}
