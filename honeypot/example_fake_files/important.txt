@@ -1,0 +1,4 @@
+SYNTHETIC HONEYPOT FILE — NO REAL OR CONFIDENTIAL DATA
+
+Internal project notes for the simulated environment.
+This file exists only as deceptive content for controlled honeypot testing.
