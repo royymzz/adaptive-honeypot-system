@@ -24,35 +24,18 @@ A controlled virtual lab was created with two Kali Linux virtual machines: one h
 - JSON event inspection and filtering with `jq`
 - Controlled evaluation using login attempts, command execution, deceptive-file access, and file retrieval
 
-## System Flow
+## System Architecture
 
-```text
-Controlled Test VM
-        |
-        | SSH interaction
-        v
-+---------------------+
-|   Cowrie Honeypot   |
-|  Deceptive Filesystem|
-+----------+----------+
-           |
-           | event / log data
-           v
-+---------------------+
-|   Log Monitoring    |
-+----------+----------+
-           |
-           v
-+---------------------+
-|   Python Alerting   |
-+----------+----------+
-           |
-           | Telegram Bot API
-           v
-+---------------------+
-|  Real-time Alerts   |
-+---------------------+
+```mermaid
+flowchart LR
+    A[Controlled Test VM<br/>Kali Linux] -->|SSH test activity| B[Cowrie Honeypot<br/>Kali Linux]
+    B --> C[Deceptive Filesystem<br/>Fictional files and credentials]
+    B -->|Cowrie logs| D[Log Monitoring<br/>Bash]
+    D --> E[Alert Component<br/>Python]
+    E -->|Telegram Bot API| F[Real-time Notifications]
 ```
+
+The diagram reflects the controlled lab workflow used in the academic project: test activity reached Cowrie over SSH, Cowrie recorded the interaction, the monitoring component watched relevant log activity, and the Python component sent notifications through Telegram.
 
 ## Controlled Evaluation
 
