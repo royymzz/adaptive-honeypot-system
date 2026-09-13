@@ -1,0 +1,14 @@
+[Unit]
+Description=Watch Cowrie logs and send security alerts
+After=network.target
+
+[Service]
+Type=simple
+User=cowrie
+WorkingDirectory=/opt/cowrie/telegram
+ExecStart=/opt/cowrie/telegram/watch_log.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
