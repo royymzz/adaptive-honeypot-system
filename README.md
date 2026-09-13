@@ -58,6 +58,32 @@ The project explored the effect of human-like and deceptive elements on honeypot
 - [Lab Setup Overview](docs/SETUP_OVERVIEW.md) — controlled environment and project components
 - [Testing and Results](docs/TESTING_AND_RESULTS.md) — documented test scenarios and evidence
 - [Security and Sanitization](docs/SECURITY.md) — rules used for the public portfolio reconstruction
+- 
+## Demonstration
+
+The screenshots below were captured during the controlled evaluation of the original academic project.
+
+### Successful authentication recorded by Cowrie
+
+![Successful Login](assets/screenshots/02-successful-login-logs.png)
+
+---
+
+### Command activity captured by the honeypot
+
+![Command Activity](assets/screenshots/03-command-activity-logs.png)
+
+---
+
+### Interaction with the deceptive filesystem
+
+![Deceptive Files](assets/screenshots/05-deceptive-file-access.png)
+
+---
+
+### Real-time Telegram alerts
+
+![Telegram Alerts](assets/screenshots/06-telegram-alerts.png)
 
 ## Public Examples
 
