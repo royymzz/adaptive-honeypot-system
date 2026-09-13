@@ -1,0 +1,3 @@
+# SYNTHETIC HONEYPOT DATA — NOT REAL CREDENTIALS
+analyst@example.invalid:training-password
+admin@example.invalid:demo-password
