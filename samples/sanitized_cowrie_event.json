@@ -1,0 +1,10 @@
+{
+  "eventid": "cowrie.login.success",
+  "username": "demo-user",
+  "password": "example-only",
+  "message": "sanitized example login event",
+  "sensor": "lab-honeypot",
+  "timestamp": "2025-05-29T08:15:46Z",
+  "src_ip": "192.0.2.10",
+  "session": "example-session-id"
+}
