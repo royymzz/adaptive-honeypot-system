@@ -6,16 +6,16 @@ A cybersecurity research project exploring a Cowrie SSH/Telnet honeypot enhanced
 
 ## Overview
 
-This project was developed as my final-year Bachelor's dissertation. The aim was to investigate whether adding more realistic, human-like behaviour to a honeypot could increase attacker interaction and produce richer security data.
+This project was developed as a final-year Bachelor's dissertation. The aim was to investigate whether adding more realistic, human-like behaviour to a honeypot could increase attacker interaction and produce richer security data.
 
 The system was built in a controlled lab environment using two Kali Linux virtual machines. One machine hosted a customized Cowrie honeypot, while the second was used to perform controlled attack simulations.
 
-The honeypot included a deceptive filesystem, fake credentials and files, simulated activity, automated log monitoring, and real-time administrator notifications.
+The honeypot included a deceptive filesystem, fictional credentials and files, simulated activity, automated log monitoring, and real-time administrator notifications.
 
 ## Key Features
 
 - Cowrie SSH/Telnet honeypot deployed in a controlled Kali Linux environment
-- Customized deceptive filesystem with fake files and credentials
+- Customized deceptive filesystem with fictional files and credentials
 - Human-like and scripted interactions designed to improve realism
 - Monitoring of login attempts, commands, user input, session activity, and download attempts
 - Python-based Telegram alert integration
@@ -39,12 +39,12 @@ Attacker / Test VM
           | Cowrie logs
           v
 +-------------------+
-|   watch_log.sh    |
+| Log Monitoring    |
 +---------+---------+
           |
           v
 +-------------------+
-|  send_alerts.py   |
+| Python Alerting   |
 +---------+---------+
           |
           | Telegram Bot API
@@ -54,15 +54,21 @@ Attacker / Test VM
 +-------------------+
 ```
 
+## Documentation
+
+- [Project Notes](docs/PROJECT_NOTES.md) — design and implementation summary
+- [Lab Setup Overview](docs/SETUP_OVERVIEW.md) — controlled environment and project components
+- [Testing and Results](docs/TESTING_AND_RESULTS.md) — evaluation scenarios and evidence produced
+
 ## Repository Structure
 
 ```text
 adaptive-honeypot-system/
 ├── README.md
 ├── .gitignore
+├── .env.example
 ├── src/
-│   ├── send_alerts.py
-│   └── watch_log.sh
+│   └── send_alerts.py
 ├── systemd/
 │   └── watchlog.service
 ├── honeypot/
@@ -70,11 +76,14 @@ adaptive-honeypot-system/
 ├── samples/
 │   └── sanitized_cowrie_event.json
 └── docs/
+    ├── PROJECT_NOTES.md
+    ├── SETUP_OVERVIEW.md
+    └── TESTING_AND_RESULTS.md
 ```
 
 ## Academic Context
 
-This repository is a cleaned and sanitized portfolio version of my 2025 Bachelor's dissertation project in Cybersecurity and Networks. The original research investigated the use of more human-like behaviour in honeypot environments and evaluated the resulting attacker engagement through controlled experiments and Cowrie log analysis.
+This repository is a cleaned and sanitized portfolio version of a 2025 Bachelor's dissertation project in Cybersecurity and Networks. The original research investigated the use of more human-like behaviour in honeypot environments and evaluated the resulting interaction through controlled experiments and Cowrie log analysis.
 
 The experiments included simulated brute-force login attempts, command execution, and file retrieval. The project also evaluated a real-time alerting pipeline that connected Cowrie log events to Telegram notifications.
 
